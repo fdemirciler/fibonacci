@@ -22,7 +22,7 @@ function generateNum(num) {
         }
 
     }
-    return acu
+    return acu.map(x => Intl.NumberFormat().format(x)).join(', ')
 }
 
 const fibonacci = function (number) {

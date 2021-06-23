@@ -35,7 +35,13 @@ header {
     overflow-wrap: break-word;
     word-wrap: break-word;
     font-stretch: expanded;
-    width: 1300px;
+    width: fit-content;
     border: 1px solid lightgray;
     font-size: .9rem;
+}
+
+a {
+    text-decoration: none;
+    margin-top: 20px;
+    color: #00F;
 }

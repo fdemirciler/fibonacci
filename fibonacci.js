@@ -22,22 +22,36 @@ function generateNum(num) {
         }
 
     }
-    return acu.map(x => Intl.NumberFormat().format(x)).join(', ')
+    return acu.map(x => Intl.NumberFormat().format(x)).join(' ')
 }
 
-const fibonacci = function (number) {
-
-    return generateNum(number)[number]
-};
-
-
-//module.exports = fibonacci;
-
-//const userInput = document.getElementById('number').value;
+// Update the page
 
 function showResult(input) {
     let userInput = parseInt(document.getElementById(input).value);
     let div = document.getElementById('result');
-    div.innerHTML =  generateNum(userInput);
+    div.innerHTML = generateNum(userInput);
+    generateFile(generateNum());
 };
 
+// Create CSV file
+
+function generateFile(num) {
+
+    const csvFile = num;
+
+    const blob = new Blob([csvFile], {
+        type: 'text/csv;charset=utf-8;'
+    });
+
+    const link = document.createElement("a");
+
+    if (link.download !== undefined) {
+
+        const url = URL.createObjectURL(blob);
+        link.setAttribute("href", url);
+        link.setAttribute("download", 'file.csv');
+        link.innerHTML = "Download the sequence as CSV file"
+        document.body.appendChild(link);
+    }
+}
